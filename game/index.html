@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Quiet Gallery — a stealth game</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #0a0c12;
+    height: 100%;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+  #wrap {
+    text-align: center;
+  }
+  canvas {
+    display: block;
+    width: 960px;
+    height: 600px;
+    background: #241a12;
+    border: 1px solid #3d4457;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+  }
+  #help {
+    color: #8f8a7a;
+    font-size: 13px;
+    margin-top: 10px;
+    font-family: sans-serif;
+  }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="960" height="600"></canvas>
+  <div id="help">WASD / arrows move &middot; Shift sneak &middot; Click throws a coin &middot; R retry &middot; Enter start</div>
+</div>
+<script type="module">
+  import { Game, exposeForShots } from './src/main.js';
+  const canvas = document.getElementById('game');
+  const game = new Game(canvas);
+  exposeForShots(game);
+  game.run();
+</script>
+</body>
+</html>
